@@ -1,0 +1,44 @@
+# ===== Node modules (frontend & backend) =====
+node_modules/
+
+# ===== Logs =====
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ===== Runtime / PIDs =====
+pids/
+*.pid
+*.pid.lock
+*.seed
+
+# ===== Build / Production =====
+build/
+dist/
+
+# ===== Environment files =====
+.env
+.env.local
+.env.*.local
+
+# ===== Cache =====
+.cache/
+.tmp/
+.npm
+.eslintcache
+.pnp/
+.pnp.js
+
+# ===== OS / Editor files =====
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# IDEs
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+

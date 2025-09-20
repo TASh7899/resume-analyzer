@@ -1,0 +1,10 @@
+.page {
+  height: 100%;
+  padding: 10px;
+}
+
+.editor {
+  padding: 1rem 3rem 1rem 3rem;
+  border: 1px solid #000;
+  margin: 1rem;
+}
