@@ -13,6 +13,7 @@ import Blockquote from "@tiptap/extension-blockquote"
 import TextAlign from "@tiptap/extension-text-align"
 import Gapcursor from "@tiptap/extension-gapcursor"
 
+import api from "../axiosConfig.ts";
 
 import ToolBar from './EditorToolBar.tsx';
 
@@ -35,6 +36,13 @@ export default function MyEditor() {
     content: "<p>Write your resume here</p>"
   });
 
+  const generateContent = async (prompt) => {
+    const extra = "make sure you dont include any extra text other than actual answer, it should be easily copy, pastable in tip tap"
+    prompt += extra
+    try {
+      const res = api.post('/api/pdf/generate', prompt)
+    }
+  }
 
   return (
     <div className={styles.page}>
@@ -44,7 +52,7 @@ export default function MyEditor() {
           <EditorContent editor={editor} />
         </div>
       </div>
-      
+
     </div>
   )
 

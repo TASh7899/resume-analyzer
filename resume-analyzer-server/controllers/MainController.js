@@ -1,4 +1,8 @@
+require('dotenv').config();
 const puppeteer = require('puppeteer');
+const { GoogleGenAI } = require("@google/genai")
+
+const ai = new GoogleGenAI({});
 
 exports.generated_pdf = async (req, res) => {
   try {
@@ -47,5 +51,27 @@ exports.generated_pdf = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Error generating PDF" });
+  }
+}
+
+exports.generativeAI = async (req, res) => {
+  try {
+    const { prompt } = req.body;
+    
+    if (!prompt) {
+      res.status(400).json({ error: "please provide a prompt" })
+    }
+
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt
+    });
+    console.log(response)
+    const text = response.text;
+
+    res.json({ text: text })
+  } catch (err) {
+    res.status(500).json({ error: "internal server error" })
+    console.log(err)
   }
 }
