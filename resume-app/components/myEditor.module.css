@@ -5,6 +5,11 @@
 
 .editor {
   padding: 1rem 3rem 1rem 3rem;
-  border: 1px solid #000;
+  border: 1px solid #141204;
+  border-radius: 1rem;
   margin: 1rem;
+  background-color: var(--secondary-color);
 }
+
+
+

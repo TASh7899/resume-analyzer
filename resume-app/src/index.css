@@ -4,6 +4,15 @@
   font-family: Calibri, Arial, Helvetica, sans-serif !important;
 }
 
+:root {
+  --primary-color: #9A879D;
+  --secondary-color: #FAF8F1;
+  --background-color: #010001;
+  --background-color2: #212227;
+  --text-color: #0F1A20;
+  --accent-color: #e74c3c;
+}
+
 
 .ProseMirror p, 
 .ProseMirror h1, 
@@ -15,4 +24,12 @@
 
 .ProseMirror:focus {
   outline: none;
+}
+
+* {
+  color: var(--text-color);
+}
+
+body {
+  background-color: var(--background-color);
 }

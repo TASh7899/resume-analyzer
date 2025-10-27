@@ -20,7 +20,7 @@ export default function MyEditor() {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({heading: false}),
-      Heading.configure({ levels: [1, 2, 3] }),
+      Heading.configure({ levels: [1, 2, 3, 4] }),
       Bold,
       Italic,
       Underline,

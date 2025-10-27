@@ -3,6 +3,6 @@ const router = express.Router();
 const MainController = require("../controllers/MainController.js");
 
 router.post('/download', MainController.generated_pdf);
-router.post('/generate', MainController.generativeAI);
+router.post('/AI', MainController.MainAI);
 
 module.exports = router;
