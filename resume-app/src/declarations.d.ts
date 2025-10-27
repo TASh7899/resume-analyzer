@@ -9,3 +9,7 @@ declare module '*.module.css' {
   export default classes;
 }
 
+
+declare module "*.jsx";
+declare module "*.css";
+
