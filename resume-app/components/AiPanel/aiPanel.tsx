@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Editor } from '@tiptap/react';
-import api from "../axiosConfig.ts";
+import api from "../../axiosConfig.ts";
 import styles from './aiPanel.module.css';
-import PopUp from "../components/popup/PopUp.jsx";
+import PopUp from "../popup/PopUp.jsx";
 
 type Props = {
   editor: Editor | null;
@@ -142,7 +142,7 @@ export default function Aipanel({ editor }: Props) {
       className={styles.aiPanelTextArea}
         />
 
-      <div>
+      <div className={styles.AiPanelGenBtn}>
       <button onClick={() => AI()} disabled={isEvaluating}>
       {isEvaluating ? "loading..." : "Generate"}
       </button>

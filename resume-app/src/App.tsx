@@ -1,5 +1,5 @@
 import './App.css'
-import MyEditor from '../components/myEditor.tsx';
+import MyEditor from '../components/Editor/myEditor.tsx';
 
 function App() {
 

@@ -14,7 +14,10 @@ import TextAlign from "@tiptap/extension-text-align"
 import Gapcursor from "@tiptap/extension-gapcursor"
 
 
-import ToolBar from './EditorToolBar.tsx';
+import Link from "@tiptap/extension-link"
+
+import ToolBar from '../ToolBar/EditorToolBar.tsx';
+
 
 export default function MyEditor() {
   const editor = useEditor({
@@ -31,21 +34,26 @@ export default function MyEditor() {
       Blockquote,
       TextAlign.configure( { types: ["heading", "paragraph"] }),
       Gapcursor,
+      Link.configure({
+        openOnClick: true,
+      }),
     ],
     content: "<p>Write your resume here</p>"
   });
 
 
   return (
-    <div className={styles.page}>
-      <div className={styles.EditorWindow}>
-        <ToolBar editor={editor} />
-        <div className={styles.editor}>
-          <EditorContent editor={editor} />
+    <>
+      <div className={styles.page}>
+        <div className={styles.EditorWindow}>
+          <ToolBar editor={editor} />
+          <div className={styles.editor}>
+            <EditorContent editor={editor} />
+          </div>
         </div>
       </div>
-      
-    </div>
+
+    </>
   )
 
 }

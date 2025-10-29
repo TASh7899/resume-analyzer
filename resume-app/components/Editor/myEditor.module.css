@@ -11,5 +11,8 @@
   background-color: var(--secondary-color);
 }
 
+.editor a {
+  color: #2a63d4;
+}
 
 

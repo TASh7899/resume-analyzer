@@ -1,0 +1,77 @@
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border: 2px solid #000;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 0;
+  top: 0;
+  z-index: 99;
+  background-color: var(--primary-color);
+  justify-content: space-between;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 18px;
+  align-items: center;
+}
+.toolbar button {
+  background-color: transparent;
+  padding: 6px; 
+  cursor: pointer;
+  height: 100%;
+  border: none;
+}
+
+
+.ToolBarRightBtns {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.ToolBarLeftBtns {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+
+
+.ToolBarSelectDiv {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ToolBarRightBtns button {
+  font-size: 14px;
+}
+
+.toolbar button svg {
+  fill : var(--primary-color-dark);
+}
+
+.toolbar select{
+  background-color: transparent;
+  border: 2px solid var(--primary-color-dark);
+  border-radius: 7px;
+  color: var(--primary-color-dark);
+  height: 1.9rem;
+}
+
+.ToolBarBubbleMenu {
+  display: flex;
+  gap: 2px;
+}
+
+.ToolBarBubbleMenu button {
+  background-color: var(--primary-color);
+  border: 1px solid black;
+  border-radius: 5px;
+  color: var(--primary-color-dark);
+}
+
