@@ -15,4 +15,19 @@
   color: #2a63d4;
 }
 
+.MainHeading {
+  text-align: center;
+  color: white;
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-size: 2.5rem;
+  font-family: monospace;
+}
+
+.MainSubHeading {
+  color: white;
+  text-align: center;
+  font-family: monospace;
+  font-size: 1rem;
+}
 

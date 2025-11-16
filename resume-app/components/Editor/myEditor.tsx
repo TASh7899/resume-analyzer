@@ -44,6 +44,8 @@ export default function MyEditor() {
 
   return (
     <>
+      <h1 className={styles.MainHeading}>Resume Builder</h1>
+      <p className={styles.MainSubHeading}>- by Tanush Gupta and Yash Bansal -</p>
       <div className={styles.page}>
         <div className={styles.EditorWindow}>
           <ToolBar editor={editor} />
