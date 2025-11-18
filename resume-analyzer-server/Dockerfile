@@ -1,6 +1,6 @@
 FROM node:20-slim
 
-# Install all dependencies Chromium needs
+# Install required dependencies for Chromium
 RUN apt-get update && apt-get install -y \
     wget \
     ca-certificates \
@@ -17,22 +17,30 @@ RUN apt-get update && apt-get install -y \
     libxext6 \
     libxfixes3 \
     libxrandr2 \
+    libxss1 \
     libxshmfence1 \
     libnss3 \
     libnspr4 \
     libdrm2 \
     libgbm1 \
+    libxkbcommon0 \
     xdg-utils \
-    --no-install-recommends \
-  && rm -rf /var/lib/apt/lists/*
+    --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
+# Create and use app directory
 WORKDIR /app
 
+# Copy dependency files
 COPY package*.json ./
-RUN npm install   # puppeteer must be a dependency (not puppeteer-core)
 
+# Install dependencies (must include puppeteer, not puppeteer-core)
+RUN npm install
+
+# Copy rest of project
 COPY . .
 
 EXPOSE 3000
+
+# Start App
 CMD ["npm", "start"]
 
