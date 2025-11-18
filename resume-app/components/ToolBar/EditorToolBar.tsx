@@ -120,8 +120,7 @@ export default function ToolBar({ editor }: Props) {
       {editor && (
       <BubbleMenu 
       editor={editor}
-      shouldShow={({editor} : Props) => editor.isActive('link')}
-      tippyOptions={{ duration: 100 }}
+      shouldShow={({editor}) => editor.isActive('link')}
       >
         <div className={styles.ToolBarBubbleMenu}>
           <button onMouseDown={(e) => {
@@ -134,8 +133,8 @@ export default function ToolBar({ editor }: Props) {
           <button onMouseDown={(e) => {
             e.preventDefault();
             e.stopPropagation();
-            editor.chain().focus().extendMarkRange("link").unsetLink().run()>
-            editor.commands.foucs();
+            editor.chain().focus().extendMarkRange("link").unsetLink().run()
+            editor.commands.focus();
           }}>
             delete
           </button>
