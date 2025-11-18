@@ -20,10 +20,12 @@ type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 export default function ToolBar({ editor }: Props) {
 
   const [showAiPanel, setShowAiPanel] = useState(false);
+  const [downloading, setdownloading] = useState(false);
 
   const downloadPDF = useCallback(async () => {
     if (!editor) return;
     try {
+      setdownloading(true);
       const content = editor.getHTML();
       const res = await api.post("/pdf/download", { content }, { responseType: "blob" });
 
@@ -36,8 +38,10 @@ export default function ToolBar({ editor }: Props) {
       link.remove();
       window.URL.revokeObjectURL(url);
       console.log("successfully downloaded pdf");
+      setdownloading(false);
     } catch (err) {
       console.error("Error downloading pdf:", err);
+      setdownloading(false);
     }
   }, [editor]);
 
@@ -111,7 +115,7 @@ export default function ToolBar({ editor }: Props) {
         </div>
 
         <div className={styles.ToolBarRightBtns}>
-          <button onClick={downloadPDF}><BiDownload size={28}/></button>
+          <button onClick={downloadPDF} disabled={downloading}>{ downloading ? "downloading.." : <BiDownload size={28}/>}</button>
         </div>
 
       </div>
