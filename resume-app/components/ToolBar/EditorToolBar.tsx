@@ -106,7 +106,7 @@ export default function ToolBar({ editor }: Props) {
 
       if (res.data.markdown && editor) {
         if ((editor.storage as any).markdown) {
-          editor.commands.setContent(res.data.markdown, { contentType: 'markdown' });
+          editor.commands.setContent(res.data.markdown, { contentType: 'markdown' } as any);
         } else {
           editor.commands.setContent(res.data.markdown);
         }
