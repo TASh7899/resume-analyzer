@@ -56,7 +56,8 @@ export default function Aipanel({ editor, apiKey }: Props) {
     if (!editor) return;
     isProgrammaticUpdate.current = true;
     
-    if (editor.storage.markdown) {
+    if ((editor.storage as any).markdown) {
+      // @ts-expect-error - TS definitions for TipTap markdown are missing this property
       editor.commands.setContent(content, { contentType: 'markdown' }); 
     } else {
       editor.commands.setContent(content); 
@@ -72,8 +73,8 @@ export default function Aipanel({ editor, apiKey }: Props) {
     try {
       setIsError(false);
       let currentContent = "";
-      if (editor.storage.markdown) {
-        currentContent = editor.storage.markdown.getMarkdown();
+      if ((editor.storage as any).markdown) {
+        currentContent = (editor.storage as any).markdown.getMarkdown();
       } else {
         currentContent = editor.getHTML();
         console.warn("Markdown extension not found. Falling back to HTML.");

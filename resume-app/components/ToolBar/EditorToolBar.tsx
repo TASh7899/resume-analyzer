@@ -17,7 +17,6 @@ type Props = {
   editor: Editor | null;
 };
 
-type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 export default function ToolBar({ editor }: Props) {
 
@@ -106,8 +105,7 @@ export default function ToolBar({ editor }: Props) {
       });
 
       if (res.data.markdown && editor) {
-        if (editor.storage.markdown) {
-          // @ts-expect-error - TS definitions for TipTap markdown are often missing this property
+        if ((editor.storage as any).markdown) {
           editor.commands.setContent(res.data.markdown, { contentType: 'markdown' });
         } else {
           editor.commands.setContent(res.data.markdown);
