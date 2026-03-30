@@ -1,30 +1,27 @@
-FROM ghcr.io/puppeteer/puppeteer:latest
+# 1. Use a lightweight Debian-based Node image
+FROM node:20-slim
 
-# Switch to root for installation
-USER root
+# 2. Install Chromium and required fonts manually (100% explicit)
+RUN apt-get update \
+    && apt-get install -y chromium \
+    fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
+    --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 
-# Create working directory inside container
+# 3. Tell Puppeteer to SKIP downloading its own Chrome and use the one we just installed
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
+
+# 4. Standard app setup
 WORKDIR /usr/src/app
 
-# Copy dependency files
 COPY package*.json ./
-
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-
-# Install dependencies
 RUN npm install
 
-# Copy all server files
 COPY . .
 
-# Fix permission so non-root user can run safely
-RUN chown -R pptruser:pptruser /usr/src/app
-
-# Switch back to non-root (safer)
-USER pptruser
-
-# Expose port for Render
+# Expose your Render port
 EXPOSE 3000
 
-# Run your app
+# Start the app
 CMD ["node", "index.js"]
