@@ -53,3 +53,22 @@
   border-radius: 8px; 
 }
 
+
+@media (max-width: 768px) {
+  .aiPanel {
+    padding: 8px;
+    flex-direction: column;
+  }
+
+  .suggestionActions {
+    flex-wrap: wrap; 
+    justify-content: flex-end;
+  }
+
+  .suggestionActions span {
+    width: 100%; 
+    text-align: left; 
+    margin-bottom: 4px;
+  }
+}
+

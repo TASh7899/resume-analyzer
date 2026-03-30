@@ -318,7 +318,7 @@ export default function ToolBar({ editor }: Props) {
 
     {showInfoModal && (
       <div className={styles.modalOverlay}>
-        <div className={styles.modalContent} style={{ width: "350px" }}>
+      <div className={styles.modalContent} style={{ width: "90vw", maxWidth: "350px" }}>
           <h3 style={{ marginTop: 0, marginBottom: "10px" }}>How to use this app</h3>
 
           <ul style={{ fontSize: "14px", paddingLeft: "20px", margin: "0 0 15px 0", lineHeight: "1.5" }}>
