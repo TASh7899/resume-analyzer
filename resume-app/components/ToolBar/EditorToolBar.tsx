@@ -90,13 +90,21 @@ export default function ToolBar({ editor }: Props) {
 
   const handleFileUpload = async (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (!file || file.type !== "application/pdf") return;
+    
+    if (!file) return;
+    const isPdf = file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+    if (!isPdf) {
+      alert("Please select a valid PDF file.");
+      return;
+    }
 
     try {
       setIsParsing(true);
 
+      const safeFile = new File([file], "upload_resume.pdf", { type: "application/pdf" });
+
       const formData = new FormData();
-      formData.append("resumePdf", file);
+      formData.append("resumePdf", safeFile);
 
       const res = await api.post("/pdf/parse", formData, {
         headers: {
