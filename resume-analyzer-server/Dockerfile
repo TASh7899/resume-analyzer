@@ -9,7 +9,9 @@ WORKDIR /usr/src/app
 # Copy dependency files
 COPY package*.json ./
 
-# Install dependencies (must include puppeteer, not puppeteer-core)
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+
+# Install dependencies
 RUN npm install
 
 # Copy all server files
@@ -26,4 +28,3 @@ EXPOSE 3000
 
 # Run your app
 CMD ["node", "index.js"]
-
