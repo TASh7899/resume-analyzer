@@ -328,8 +328,12 @@ export default function ToolBar({ editor }: Props) {
             <li>Use the <strong>Download</strong> button to export your final resume as a PDF.</li>
           </ul>
 
-          <div style={{ backgroundColor: "rgba(231, 76, 60, 0.1)", borderLeft: "4px solid #e74c3c", padding: "10px", borderRadius: "4px", fontSize: "13px", marginBottom: "20px" }}>
+          <div style={{ backgroundColor: "rgba(231, 76, 60, 0.1)", borderLeft: "4px solid #e74c3c", padding: "10px", borderRadius: "4px", fontSize: "13px", marginBottom: "10px" }}>
             <strong>Note:</strong> If AI Generation or PDF Parsing is failing, the default server API key may have expired. Click the <strong>Key icon</strong> in the toolbar to temporarily use your own Gemini API Key.
+          </div>
+
+          <div style={{ backgroundColor: "rgba(243, 156, 18, 0.1)", borderLeft: "4px solid #f39c12", padding: "10px", borderRadius: "4px", fontSize: "13px", marginBottom: "20px" }}>
+            <strong>Heads up:</strong> AI generation can sometimes be unpredictable and output unformatted or "garbage" text. If this happens, simply click <strong>Discard</strong> in the AI panel and try generating again!
           </div>
 
           <div className={styles.modalActions}>
