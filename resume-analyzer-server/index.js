@@ -1,14 +1,17 @@
 const routes = require('./routes/MainRoute.js');
 const express = require('express');
 const cors = require('cors');
+const cookieParser = require('cookie-parser'); 
 
 const app = express();
 app.use(express.json());
+app.use(cookieParser());
 
 const corsOptions = {
   origin: ["http://localhost:5173", "https://resume-frontend-fl09.onrender.com"],
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
 };
 
 app.use(cors(corsOptions));
