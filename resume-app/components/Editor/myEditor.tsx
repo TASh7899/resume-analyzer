@@ -18,9 +18,8 @@ export default function MyEditor() {
 
   const editor = useEditor({
     extensions: [
-      // StarterKit already includes Bold, Italic, Lists, Blockquote, GapCursor, etc.
       StarterKit.configure({
-        heading: false, // Disabled here because we manually configure it below
+        heading: false,
       }),
       Markdown,
       Heading.configure({ levels: [1, 2, 3, 4] }),
@@ -39,7 +38,6 @@ export default function MyEditor() {
   return (
     <>
       <h1 className={styles.MainHeading}>Resume Builder</h1>
-      <p className={styles.MainSubHeading}>- by Tanush Gupta and Yash Bansal -</p>
       <div className={styles.page}>
         <div className={styles.EditorWindow}>
           <ToolBar editor={editor} />
