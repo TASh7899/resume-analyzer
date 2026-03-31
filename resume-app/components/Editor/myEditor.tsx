@@ -1,6 +1,8 @@
 import { EditorContent, useEditor } from "@tiptap/react";
 import styles from './myEditor.module.css';
 
+import {useState} from "react";
+
 import StarterKit from "@tiptap/starter-kit";
 import { Markdown } from "tiptap-markdown"; 
 
@@ -11,10 +13,13 @@ import Link from "@tiptap/extension-link";
 
 import ToolBar from '../ToolBar/EditorToolBar.tsx';
 
+import AdModal from '../AdModal/AdModal.tsx';
+
 export default function MyEditor() {
   
   const savedContent = localStorage.getItem("resume_editor_content");
   const initialContent = savedContent ? savedContent : "<p>Write your resume here</p>";
+  const [hasWatchedAd, setHasWatchedAd] = useState(false);
 
   const editor = useEditor({
     extensions: [
@@ -37,6 +42,11 @@ export default function MyEditor() {
 
   return (
     <>
+
+    {!hasWatchedAd && (
+      <AdModal onComplete={() => setHasWatchedAd(true)} />
+    )}
+
       <h1 className={styles.MainHeading}>Resume Builder</h1>
       <div className={styles.page}>
         <div className={styles.EditorWindow}>
