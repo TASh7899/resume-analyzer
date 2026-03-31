@@ -72,3 +72,26 @@
   }
 }
 
+.adWrapper {
+  width: 100%;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(0, 0, 0, 0.2);
+  /* Force it to be a thin banner */
+  max-height: 100px; 
+  min-height: 90px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure it stays clean on mobile */
+@media (max-width: 768px) {
+  .adWrapper {
+    margin-top: 8px;
+    padding-top: 8px;
+  }
+}
+
+

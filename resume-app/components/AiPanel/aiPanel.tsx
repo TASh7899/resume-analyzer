@@ -4,6 +4,8 @@ import api from "../../axiosConfig.ts";
 import styles from './aiPanel.module.css';
 import PopUp from "../popup/PopUp.jsx";
 
+import AdUnit from '../AdUnit/AdUnit.tsx';
+
 type Props = {
   editor: Editor | null;
   apiKey?: string; 
@@ -194,6 +196,12 @@ export default function Aipanel({ editor, apiKey }: Props) {
           <button type="button" onClick={discardSuggestion}>Discard</button>
         </div>
       )}
+
+      <div className={styles.adWrapper}>
+         <AdUnit slotId="8127864116" />
+      </div>
+
+
     </div>
     </>
   )

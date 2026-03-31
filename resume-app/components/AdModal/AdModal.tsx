@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import styles from './AdModal.module.css';
 
 type Props = {
@@ -6,20 +6,10 @@ type Props = {
 };
 
 export default function AdModal({ onComplete }: Props) {
-  const [timeLeft, setTimeLeft] = useState(15);
   const adLoaded = useRef(false);
 
   useEffect(() => {
-    if (timeLeft <= 0) return;
-
-    const timerId = setInterval(() => {
-      setTimeLeft((prev) => prev - 1);
-    }, 1000);
-
-    return () => clearInterval(timerId);
-  }, [timeLeft]);
-
-  useEffect(() => {
+    // Prevent double-pushing in React Strict Mode
     if (adLoaded.current) return;
 
     try {
@@ -37,7 +27,7 @@ export default function AdModal({ onComplete }: Props) {
     <div className={styles.overlay}>
       <div className={styles.modal}>
         <h2>Support Our Tool</h2>
-        <p>Your resume builder is loading. Please view this message from our sponsors to keep this tool free.</p>
+        <p>Please view this message from our sponsors to keep this tool free.</p>
         
         <div className={styles.adContainer} style={{ overflow: 'hidden', display: 'flex', justifyContent: 'center' }}>
           <ins 
@@ -50,12 +40,12 @@ export default function AdModal({ onComplete }: Props) {
           </ins>
         </div>
 
+        {/* Button is now instantly clickable with no disabled state */}
         <button 
           className={styles.continueBtn}
-          disabled={timeLeft > 0} 
           onClick={onComplete}
         >
-          {timeLeft > 0 ? `Continue to App in ${timeLeft}s` : "Continue to Resume Builder"}
+          Continue to Resume Builder
         </button>
       </div>
     </div>
